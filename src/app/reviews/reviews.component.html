@@ -1,0 +1,21 @@
+<div class="container page">
+  <div class="cards">
+    <a *ngFor="let review of reviews" routerLink="/recipe/{{review.recipeId}}">
+      <div class="card">
+        <img src="{{review.image}}" alt="">
+        <h2>{{review.recipeName}}</h2>
+        <p class="center"><i>"{{review.description}}"</i></p>
+        <p class="right">- {{review.user}}</p>
+        <div class="divider"></div>
+
+        <a href="user/{{review.user}}/{{review.userId}}">
+          <div class="user">
+            <img src="{{review.userImage}}" alt="">
+            <p>Recipe by <strong>{{review.recipeUser}}</strong></p>
+          </div>
+        </a>
+        <div class="divider"></div>
+      </div>
+    </a>
+  </div>
+</div>

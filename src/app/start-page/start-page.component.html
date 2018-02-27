@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container page">
+  <div class="cards">
+    <a *ngFor="let recipe of recipes" routerLink="/recipe/{{recipe.id}}">
+      <div class="card" id="{{recipe.id}}">
+        <div class="recipeimage" [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}"></div>
+        <h2>{{recipe.name}}</h2>
+        <div class="reviews">
+          <p>{{recipe.avgReview}}</p>
+          <img *ngFor="let review of reviews" src="assets/{{review}}" alt="">
+        </div>
+        <p>{{recipe.description}}</p>
+        <div class="divider"></div>
+
+        <a href="user/{{recipe.userId}}">
+          <div class="user">
+            <img src="{{recipe.userImage}}" alt="">
+            <p>Recipe by <strong>{{recipe.user}}</strong></p>
+          </div>
+        </a>
+        <div class="divider"></div>
+      </div>
+    </a>
+  </div>
+</div>
+

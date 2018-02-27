@@ -1,0 +1,35 @@
+<div id="user" *ngIf="userExists">
+  <div class="cover-user">
+  </div>
+  <div class="container">
+    <div class="about">
+      <img src="{{user.userImage}}" alt="">
+      <div class="overview">
+        <img src="assets/heart-lila.svg" alt="">
+        <p></p>
+        <img src="assets/ubble.svg" alt="">
+        <p></p>
+        <img src="assets/recipe.svg" alt="">
+        <p></p>
+      </div>
+      <a *ngIf="userLoggedIn" (click)="signOut()" class="button">Sign Out</a>
+    </div>
+  </div>
+
+  <nav id="usernav">
+    <div class="container">
+      <ul>
+        <li routerLinkActive="active"><a routerLink="favorites">Favorites</a></li>
+        <li routerLinkActive="active"><a routerLink="reviews">Reviews</a></li>
+        <li routerLinkActive="active"><a routerLink="personal-recipes">Personal Recipes</a></li>
+        <li routerLinkActive="active" *ngIf="userLoggedIn"><a routerLink="add-recipe">Add New Recipe</a></li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+<div *ngIf="!userExists">
+  <div class="container">
+    <h1>Could not find user</h1>
+  </div>
+</div>

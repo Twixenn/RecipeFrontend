@@ -1,0 +1,26 @@
+<div class="container page">
+  <div class="cards">
+    <a *ngFor="let recipe of recipes" routerLink="/recipe/{{recipe.id}}">
+      <div class="card" id="{{recipe.id}}">
+        <img src="{{recipe.image}}" alt="">
+        <h2>{{recipe.name}}</h2>
+        <div class="reviews">
+          <p>{{recipe.avgReview}}</p>
+          <img *ngFor="let review of reviews" src="assets/{{review}}" alt="">
+        </div>
+        <p>{{recipe.description}}</p>
+        <a *ngIf="userLoggedIn" id="updateLink" routerLink="../update-recipe/{{recipe.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <div class="clear"></div>
+        <div class="divider"></div>
+
+        <a href="user/{{recipe.user}}/{{recipe.userId}}">
+          <div class="user">
+            <img src="{{recipe.userImage}}" alt="">
+            <p>Recipe by <strong>{{recipe.user}}</strong></p>
+          </div>
+        </a>
+        <div class="divider"></div>
+      </div>
+    </a>
+  </div>
+</div>

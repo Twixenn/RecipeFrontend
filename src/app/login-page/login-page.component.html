@@ -1,0 +1,19 @@
+<div class="container login">
+  <div class="text">
+    <h2>Join us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dolorem eaque harum illo mollitia quas sit voluptatem voluptatum! Animi debitis distinctio, ea earum eligendi illum laborum nihil nulla vel voluptas!</p>
+  </div>
+
+  <a (click)="createUser()" class="button">Create user</a>
+
+  <p>
+    OR
+  </p>
+  <form #loginForm="ngForm" (ngSubmit)="onSignIn(loginForm.value)">
+    <input type="text" name="username" placeholder="username" ngModel required minlength="1">
+    <input type="password" name="password" placeholder="password" ngModel required minlength="1">
+
+    <input [disabled]="!loginForm.form.valid" type="submit" value="Sign in" class="button">
+    <p [textContent]="getOutputText()"></p>
+  </form>
+</div>

@@ -1,0 +1,54 @@
+<div class="container add-recipe">
+  <h2>Update Recipe</h2>
+  <div class="divider"></div>
+  <form *ngIf="recipe" #updateRecipeForm="ngForm" (ngSubmit)="updateRecipe(updateRecipeForm.value)">
+    <div class="half">
+      <label for="name">Name:
+        <input id="name" type="text" name="name" [(ngModel)]="recipe.name" ngRequired>
+      </label>
+      <label for="description">Description:
+        <textarea id="description" name="description" [(ngModel)]="recipe.description" ngRequired></textarea>
+      </label>
+      <label for="image">Image url:
+        <input id="image" name="image" type="text" [(ngModel)]="recipe.image" ngRequired>
+      </label>
+      <label for="servings">Servings:
+        <input id="servings" type="number" name="portions" [(ngModel)]="recipe.portions" ngRequired>
+      </label>
+      <label for="time">Time
+        <input id="time" type="time" name="time" [(ngModel)]="recipe.time" ngRequired>
+      </label>
+      <label >Tags
+        <div *ngIf="tags" class="tags">
+          <label *ngFor="let category of tags.categories">
+            <input name="{{category.name}}" type="checkbox" value="{{category.name}}" (change)="onChecked($event.target.value)"
+                   [checked]="checkIfExists(category.name)">
+            {{category.name}}
+          </label>
+        </div>
+      </label>
+      <label *ngIf="tags">Ingredients:<br>
+        <input class="ingredient" type="text" name="ingredient" #ingredient>
+        <input class="amount" type="number" name="amount" #amount>
+        <select *ngIf="tags" class="unit" name="unit" (change)="onChange($event.target.value)">
+          <option *ngFor="let unit of tags.units" value="{{unit.name}}">{{unit.name}}</option>
+        </select>
+        <input class="ingredientbtn" type="button" value="+" (click)="addIngredient(ingredient.value, amount.value)">
+
+        <div *ngFor="let ingredient of addedIngredients; let i = index" class="addedIngredient">
+          <input class="ingredient" type="text" value="{{ingredient.name}}" readonly>
+          <input class="amount" type="number" value="{{ingredient.amount}}" readonly>
+          <input class="unit" type="text" value="{{ingredient.unit}}" readonly>
+          <input class="ingredientbtn" type="button" value="x" (click)="removeIngredient(i)">
+        </div>
+      </label>
+    </div>
+    <div class="half">
+      <label for="directions">Directions:
+        <textarea id="directions" name="instructions" [(ngModel)]="recipe.instructions" ngRequired></textarea>
+      </label>
+      <input type="submit" value="Add" class="button">
+      <input (click)="delete()" type="button" value="Delete" class="button">
+    </div>
+  </form>
+</div>

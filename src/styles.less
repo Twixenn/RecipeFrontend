@@ -1,0 +1,702 @@
+/* You can add global styles to this file, and also import other style files */
+@lila: #AE66B9;
+@lightgray: #DFE3DF;
+@darkgray: #9A959B;
+@fontColor: #3E3E3E;
+@navHeight: 50px;
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  color: @fontColor;
+}
+
+img {
+  height: 100%;
+  width: auto;
+}
+
+p, h1, h2, h3, h4, h5, h6, a, label {
+  font-family: Helvetica Neue;
+  text-decoration: none;
+}
+
+a {
+  color: @fontColor;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+  margin-right: 30px;
+}
+
+.clear {
+  clear: both;
+}
+
+.half {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+
+  &:nth-of-type(even) {
+    float: right;
+    top: 0;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  background-color: @lightgray;
+}
+
+input, textarea {
+  &:focus {
+    outline: none;
+  }
+}
+
+#user {
+  padding-top: 1px;
+}
+
+nav {
+  background-color: white;
+  height: @navHeight;
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+
+  #logo {
+    display: inline-block;
+    height: 70px;
+    margin-right: 50px;
+    margin-top: -10px;
+    vertical-align: top;
+  }
+
+  #icon {
+    margin-left: 30px;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+    background-color: @lightgray;
+  }
+
+  input {
+    text-align: left;
+    width: 40%;
+    height: 48px;
+    padding: 0 10px;
+    vertical-align: top;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 1.1em;
+    transition: 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: @darkgray;
+    }
+  }
+
+  button {
+    width: 50px;
+    height: @navHeight;
+    border: none;
+    outline: none;
+    vertical-align: top;
+
+    &#icon-button {
+      padding: 5px;
+      width: 20%;
+      text-align: center;
+      color: white;
+      font-size: 1em;
+      background-color: @lila;
+    }
+
+    &#search {
+      background-color: @darkgray;
+      color: white;
+      font-size: 2em;
+    }
+  }
+
+}
+
+#header {
+  height: calc(~"100vh - 80px");
+  min-height: 500px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+
+  img {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: -100;
+  }
+
+  .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 100;
+    height: 50%;
+  }
+
+  h1 {
+    color: white;
+    font-size: 6rem;
+  }
+
+  button {
+    background-color: @lila;
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    padding: 15px 50px;
+  }
+}
+
+.page {
+  padding: 15px 0;
+
+  .cards {
+    line-height: 0;
+
+    -webkit-column-count: 3;
+    -webkit-column-gap:   10px;
+    -moz-column-count:    3;
+    -moz-column-gap:      10px;
+    column-count:         3;
+    column-gap:           10px;
+
+    a {
+      line-height: 1.5em;
+      box-sizing: border-box;
+      width: 100%;
+      break-inside: avoid-column;
+      -webkit-column-break-inside: avoid;
+
+      &#updateLink{
+        float: right;
+        padding: 5px;
+        width: auto;
+        font-size: 1.5em;
+      }
+    }
+
+    .card {
+      margin-bottom: 10px;
+      break-inside: avoid-column;
+      -webkit-column-break-inside: avoid;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid @lightgray;
+
+      .recipeimage {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        line-height: 1.5em;
+      }
+
+      .reviews {
+        width: 100%;
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .divider {
+        width: 100%;
+        height: 3px;
+        background-color: @lightgray;
+      }
+
+      .user {
+        padding: 10px 0;
+        img {
+          width: 50px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        p {
+          margin-left: 10px;
+          vertical-align: middle;
+          display: inline-block;
+          line-height: normal;
+        }
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+}
+
+.recipe {
+
+  .coverimage {
+    background-size: cover;
+    background-color: @darkgray;
+    padding: 40px 0;
+
+    .information {
+      background-color: white;
+      width: 30%;
+      padding: 20px;
+
+      p {
+        line-height: 1.5em;
+      }
+    }
+  }
+
+  .banner {
+    background-color: @lightgray;
+    padding: 10px 0;
+    position: relative;
+
+    a {
+      background-color: @lila;
+      padding: 20px 30px;
+      color: white;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      img {
+        height: 30px;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
+
+    .time {
+      float: right;
+      margin-top: 10px;
+
+      img {
+        height: 30px;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      p {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      input[type=range] {
+        margin-left: 30px;
+        -webkit-appearance: none;
+        width: 200px;
+        display: inline-block;
+        background: transparent;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 30px;
+          height: 20px;
+          background-color: @lila;
+          border-radius: 10px;
+          margin-top: -5px;
+        }
+
+        &::-moz-range-thumb {
+          width: 30px;
+          height: 20px;
+          background-color: @lila;
+          border-radius: 10px;
+        }
+
+        &::-ms-thumb {
+          width: 30px;
+          height: 20px;
+          background-color: @lila;
+          border-radius: 10px;
+        }
+
+        &::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 8.4px;
+          cursor: pointer;
+          background-color: @darkgray;
+        }
+
+        &::-ms-track {
+          width: 100%;
+          cursor: pointer;
+
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .container {
+
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+
+
+  }
+
+  .directions {
+    width: 55%;
+    padding: 40px 0;
+    float: left;
+
+    .part {
+      margin-bottom: 50px;
+
+      .ingredients {
+        column-count: 3;
+        padding: 1em 0;
+
+        p {
+          margin-top: 0;
+          font-size: 0.8em;
+        }
+      }
+
+      p {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        line-height: 1.5em;
+      }
+    }
+  }
+
+  .ratings {
+    margin-top: 40px;
+    width: 38%;
+    float: right;
+    padding: 10px 20px 20px 20px;
+    box-shadow: 0px 0px 8px 2px @lightgray;
+
+    h3 {
+      display: inline-block;
+    }
+
+    .star {
+      width: 30px;
+      margin: 0 5px;
+    }
+
+    button {
+      border: none;
+      border-radius: unset;
+      background-color: @lila;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+      height: 130px;
+      padding: 10px;
+    }
+
+    .scroll {
+      text-align: left;
+      margin-top: 30px;
+      padding: 20px;
+      max-height: 600px;
+      overflow-y: scroll;
+
+      .review {
+        margin-bottom: 20px;
+        background-color: @lila;
+        color: white;
+        padding: 10px;
+      }
+    }
+
+  }
+
+  .divider {
+    width: 100%;
+    height: 3px;
+    background-color: @lightgray;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.cover-user {
+  position: absolute;
+  z-index: -100;
+  background-image: url("assets/campfire.jpg");
+  height: 100px;
+  width: 100%;
+  background-size: cover;
+}
+
+.about {
+  background-color: white;
+  margin-top: 100px;
+  margin-bottom: 30px;
+
+  img {
+    background-color: white;
+    margin-top: -50px;
+    height: 150px;
+  }
+
+  .overview {
+    margin-left: 40px;
+    margin-top: 20px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: top;
+
+    p {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    img {
+      display: inline-block;
+      height: 100%;
+    }
+  }
+}
+
+#usernav {
+  background-color: @lightgray;
+  text-align: left;
+  padding: 0;
+  height: auto;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      padding: 25px 35px;
+
+      &.active {
+        color: white;
+        background-color: @lila;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.add-recipe {
+  h2 {
+    margin-bottom: 7px;
+  }
+
+  .divider {
+    margin-bottom: 30px;
+    width: 49%;
+  }
+
+  label {
+    display: block;
+
+    input, textarea {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 30px;
+      border: 1.5px solid @lightgray;
+
+      &.ingredient {
+        width: 60%;
+        display: inline-block;
+      }
+
+      &.amount {
+        width: 15%;
+        display: inline-block;
+      }
+
+      &.unit {
+        width: 10%;
+        display: inline-block;
+      }
+
+      &.ingredientbtn {
+        position: absolute;
+        right: 0;
+        width: 37px;
+        border-radius: 30px;
+        height: 37px;
+        color: white;
+        font-size: 1em;
+        background-color: @lila;
+        padding: 0;
+        text-align: center;
+        border: none;
+        display: inline-block;
+      }
+    }
+
+    textarea {
+      height: 100px;
+    }
+  }
+
+  .tags {
+    margin-top: 20px;
+    column-count: 3;
+
+    input {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  input[type="submit"] {
+    background-color: @lila;
+    color: white;
+    padding: 10px 50px;
+    margin-top: 10px;
+    float: right;
+  }
+
+  select {
+    padding: 10px;
+    border-radius: 0;
+    width: 15%;
+    background-color: transparent;
+    height: 37px;
+    border: 1.5px solid @lightgray;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.login {
+  text-align: center;
+  padding: 40px 0;
+
+  .text {
+    width: 40%;
+    margin: auto;
+    text-align: left;
+  }
+
+  .abcRioButton {
+    width: 40%;
+    margin: 50px auto;
+
+  }
+
+  a {
+    &#loginLink {
+      color: @lila;
+      font-weight: normal;
+    }
+  }
+}
+
+footer {
+  background-color: @lightgray;
+  text-align: center;
+  padding: 30px 0;
+
+  img {
+    height: 100px;
+  }
+}
+
+.login input {
+  display: block;
+  margin: auto;
+  padding: 7px 20px;
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: @lila;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  display: block;
+  width: 100px;
+  margin: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button:disabled {
+  background-color: @darkgray !important;
+}
+
+#user .button {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  text-align: center;
+}

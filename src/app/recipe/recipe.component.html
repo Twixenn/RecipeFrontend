@@ -1,0 +1,78 @@
+<div *ngIf="recipe" class="recipe">
+  <div class="coverimage" [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}">
+    <div class="container">
+      <div class="information">
+        <h2>{{recipe.name}}</h2>
+        <a routerLink="/user/{{recipe.userId}}">
+          <div class="user">
+            <img src="{{recipe.userImage}}" alt="">
+            <p>Recipe by <strong>{{recipe.user}}</strong></p>
+          </div>
+        </a>
+        <div class="divider"></div>
+        <p>{{recipe.description}}</p>
+      </div>
+    </div>
+  </div>
+
+      <div class="banner">
+        <div class="container">
+          <a (click)="addFavoriteRecipe()">
+            <img src="assets/heart-white.svg" alt="">
+            <span>Save this for later</span>
+          </a>
+
+          <div class="time">
+            <img src="assets/clock.svg" alt="">
+            <p>{{recipe.time}}</p>
+            <input type="range" min="1" max="12" step="1" value="{{recipe.portions}}" (input)="onSlideChange($event)" class="slider" id="myRange">
+            <p>{{portions}}</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+      <div class="directions">
+        <div class="part">
+          <h2>Ingredients</h2>
+          <div class="divider"></div>
+          <div class="ingredients">
+            <p *ngFor="let ingredient of recipe.ingredients"><strong>{{(ingredient.amount/recipe.portions) * portions | number : '1.0-2'}}{{ingredient.unit}}</strong> {{ingredient.name}}<br></p>
+          </div>
+        </div>
+
+        <div class="part">
+          <h2>Directions</h2>
+          <div class="divider"></div>
+          <p ngPreserveWhitespaces>{{recipe.instructions}}</p>
+        </div>
+
+        <div class="part">
+          <h2>Tags</h2>
+          <div class="divider"></div>
+          <p *ngFor="let tag of recipe.categories">{{tag.category}}</p>
+        </div>
+      </div>
+      <div class="ratings">
+        <form #addReviewForm="ngForm" (ngSubmit)="addReview(addReviewForm.value)">
+          <label for="rating">Rating:
+            <input id="rating" type="number" value="{{userReview}}" name="reviewValue" ngModel required min="1" max="5">
+            <img class="star" *ngFor="let star of stars; let i = index" src="assets/star-{{star}}.svg" alt="" (mousedown)="reviewClick(i)" (mouseenter)="mouseOverStar(i)">
+          </label>
+          <label for="description">
+            <textarea id="description" name="description" ngModel required></textarea>
+          </label>
+          <input type="submit" value="Send">
+        </form>
+        <div class="scroll">
+          <a *ngFor="let review of recipe.reviews" routerLink="/user/{{review.userId}}">
+            <div class="review">
+              <h5>Rating by <strong>{{review.user}}</strong></h5>
+              <p>{{review.reviewValue}}</p>
+              <p>{{review.review}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

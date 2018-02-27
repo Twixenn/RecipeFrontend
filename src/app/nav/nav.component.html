@@ -1,0 +1,16 @@
+<nav>
+  <div class="container">
+    <a routerLink="">
+      <div id="logo">
+        <img src="assets/logo.svg" alt="">
+      </div>
+    </a>
+    <input type="text" placeholder="Find a recipe..."><button id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <div id="icon">
+      <img src="assets/avatar.svg" alt="">
+    </div><button id="icon-button" routerLink="user/login">
+      <span *ngIf="userLoggedIn">Hi {{user.username}}!</span>
+      <span *ngIf="!userLoggedIn">Login</span>
+    </button>
+  </div>
+</nav>
